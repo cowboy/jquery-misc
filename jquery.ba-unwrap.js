@@ -8,7 +8,7 @@
  */
 
 jQuery.fn.unwrap = function() {
-  this.parent(':not(body)')
+  this.parent().not(document.body)
     .each(function(){
       jQuery(this).replaceWith( this.childNodes );
     });
