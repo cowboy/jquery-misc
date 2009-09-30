@@ -1,5 +1,5 @@
 /*!
- * unwrap - v0.1 - 7/18/2009
+ * unwrap - v0.2 - 9/30/2009
  * http://benalman.com/projects/jquery-unwrap-plugin/
  * 
  * Copyright (c) 2009 "Cowboy" Ben Alman
@@ -8,11 +8,7 @@
  */
 
 jQuery.fn.unwrap = function() {
-  this.parent().not(document.body)
-    .each(function(){
-      jQuery(this).replaceWith( this.childNodes );
-    });
-  
-  return this;
+  return this.parent().each(function( n, elem ){
+    jQuery.nodeName( elem, 'body' ) || jQuery( elem ).replaceWith( elem.childNodes );
+  }).end();
 };
-
