@@ -28,30 +28,29 @@ $(function(){
   $('.link1').click(function(){
     // Replace all 'text' words with 'TEXT'
     
-    $('#test').replaceText( /\btext\b/gi, 'TEXT' );
+    $('#test *').replaceText( /\btext\b/gi, 'TEXT' );
   });
   
   $('.link2').click(function(){
     // Wrap all 'this' words in quotes.
     
-    $('#test').replaceText( /\b(this)\b/gi, '"$1"' );
+    $('#test *').replaceText( /\b(this)\b/gi, '"$1"' );
   });
-  
-  // You might want to use this filter if there are TEXTAREA, PRE or CODE elements,
-  // and you've set parse_html to true, like in the following examples.
-  function recommended_filter( parse_html ) {
-    if ( parse_html && /^(?:textarea|pre|code)$/i.test( this.nodeName ) ) {
-      return false;
-    }
-  };
   
   $('.link3').click(function(){
     // Wrap all 'text' words with <span class="red"/>
     
-    $('#test').replaceText( /\b(text)\b/gi, '<span class="red">$1<\/span>', recommended_filter, true );
+    $('#test').find(':not(textarea)')
+      .replaceText( /\b(text)\b/gi, '<span class="red">$1<\/span>' );
   });
   
   $('.link4').click(function(){
+    // Wrap all 'a' words, not already wrapped, with <b>, but as text only
+    
+    $('#test *').replaceText( /(?!<b>)\b(a)\b(?!<\/b>)/gi, '<b>$1<\/b>', true );
+  });
+  
+  $('.link5').click(function(){
     // Wrap all words starting with 'li' with <span class="green"/>, but only if
     // they aren't already wrapped in a span with class of green
     
@@ -59,27 +58,8 @@ $(function(){
       return '<span class="green">' + str + '<\/span>';
     };
     
-    function filter( parse_html ) {
-      if ( $(this).is('span.green') ) {
-        return false;
-      }
-      
-      return recommended_filter.call( this, parse_html );
-    };
-    
-    $('#test').replaceText( /\bli.*?\b/gi, colorize, filter, true );
-  });
-  
-  $('.link5').click(function(){
-    // Wrap all words in a <span/> with a title containing that word's index
-    
-    var i = 0;
-    
-    function countify( str ){
-      return '<span title="Word #' + (++i) +'">' + str + '<\/span>';
-    };
-    
-    $("#test").replaceText( /\b\S+?\b/g, countify, recommended_filter, true );
+    $('#test').find(':not(textarea):not(span.green)')
+      .replaceText( /\bli.*?\b/gi, colorize );
   });
   
 });
@@ -129,13 +109,13 @@ lt. brown: #C4884F
 .green {
   color: #0a0;
   border: 1px solid #0a0;
-  padding: 0 1px;
+  padding: 1px;
 }
 
 .red {
   color: #f00;
   border: 1px solid #f00;
-  padding: 0 1px;
+  padding: 1px;
 }
 
 #test input,
@@ -144,7 +124,8 @@ lt. brown: #C4884F
 }
 
 #test textarea {
-  width: 20em;
+  width: 30em;
+  height: 5em;
   margin-top: 0.6em;
 }
 
@@ -162,8 +143,7 @@ ob_start();
 <?= $shell['donate']; ?>
 
 <p>
-  <a href="http://benalman.com/projects/jquery-replacetext-plugin/">jQuery replaceText</a> will replace text recursively through the DOM, starting at a specific element. In cases where text is converted to or wrapped in HTML tags, the resulting
-  text can be optionally rendered as full HTML. Note that only text content will be modified, leaving all tags and attributes untouched.
+  <a href="http://benalman.com/projects/jquery-replacetext-plugin/">jQuery replaceText</a> will replace text in specified elements. Note that only text content will be modified, leaving all tags and attributes untouched.
 </p>
 
 <h3>Click these links:</h3>
@@ -172,8 +152,8 @@ ob_start();
   <li><a href="#" class="link1">Replace all 'text' words with 'TEXT'</a></li>
   <li><a href="#" class="link2">Wrap all 'this' words in quotes.</a> (try clicking multiple times)</li>
   <li><a href="#" class="link3">Wrap all 'text' words with &lt;span class="red"/&gt;</a> (try clicking multiple times)</li>
-  <li><a href="#" class="link4">Wrap all words starting with 'li' with &lt;span class="green"/&gt;, but only if they aren't already wrapped in a span with class of green</a> (try clicking multiple times)</li>
-  <li><a href="#" class="link5">Wrap all words in a &lt;span/&gt; with a title containing that word's index</a> (hover over words with mouse)</li>
+  <li><a href="#" class="link4">Wrap all 'a' words, not already wrapped, with &lt;b/&gt;, but as text only</a> (try clicking multiple times)</li>
+  <li><a href="#" class="link5">Wrap all words starting with 'li' with &lt;span class="green"/&gt;, but only if they aren't already wrapped in a span with class of green</a> (try clicking multiple times)</li>
 </ol>
 
 <h3>To modify this HTML:</h3>
