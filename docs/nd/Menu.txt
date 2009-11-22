@@ -46,7 +46,7 @@ Format: 1.4
 # --------------------------------------------------------------------------
 
 
-File: jQuery domReplace: Replace text recursively through the DOM  (jquery.ba-domreplace.js)
+File: jQuery replaceText: String replace for your jQueries!  (jquery.ba-replacetext.js)
 File: untils: nextUntil, prevUntil, parentsUntil  (jquery.ba-untils.js)
 
 Group: Index  {
