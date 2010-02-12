@@ -9,18 +9,6 @@
 
 (function($){
   
-  // Usage:
-  // 
-  // var elem = $('a:first');
-  // 
-  // elem.is(':attached'); // true
-  // elem.is(':detached'); // false
-  // 
-  // elem.detach();
-  // 
-  // elem.is(':attached'); // false
-  // elem.is(':detached'); // true
-  
   $.extend( $.expr[':'], {
     attached: attached,
     detached: function( elem ){ return !attached( elem ); }
@@ -36,3 +24,16 @@
   };
   
 })(jQuery);
+
+
+// Usage:
+// 
+// var elem = $('a:first');
+// 
+// elem.is(':attached'); // true
+// elem.is(':detached'); // false
+// 
+// elem.detach();
+// 
+// elem.is(':attached'); // false
+// elem.is(':detached'); // true
