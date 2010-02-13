@@ -1,11 +1,17 @@
 /*!
  * getClassData - v1.1 - 3/30/2009
- * http://benalman.com/
+ * http://benalman.com/projects/jquery-misc-plugins/
  * 
  * Copyright (c) 2009 "Cowboy" Ben Alman
- * Licensed under the MIT license
+ * Dual licensed under the MIT and GPL licenses.
  * http://benalman.com/about/license/
  */
+
+// If you're not yet using HTML 5 data- attributes, you can store basic data
+// in an element's class attribute for easy retrieval. Just give each datum a
+// prefix, which you can then use to select it.
+// 
+// Note: data can't contain spaces, and prefix is case-sensitive.
 
 (function($) {
   '$:nomunge'; // Used by YUI compressor.
@@ -33,19 +39,3 @@
   };
   
 })(jQuery);
-
-// About:
-// 
-// If you're not yet using HTML 5 data- attributes, you can store basic data
-// in an element's class attribute for easy retrieval. Just give each datum a
-// prefix, which you can then use to select it.
-// 
-// Note: data can't contain spaces, and prefix is case-sensitive.
-// 
-// Sample Usage:
-// 
-// <div id="foo" class="bar-123 baz.test baz.xyz">Look, I'm a div!</div>
-// 
-// $('#foo').getClassData('bar');        // returns '123'
-// $('#foo').getClassData('baz', '.');   // returns 'test xyz'
-

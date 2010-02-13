@@ -1,12 +1,14 @@
 /*!
  * jQuery scrollbarWidth - v0.2 - 2/11/2009
- * http://benalman.com/
+ * http://benalman.com/projects/jquery-misc-plugins/
  * 
  * Copyright (c) 2010 "Cowboy" Ben Alman
  * Dual licensed under the MIT and GPL licenses.
  * http://benalman.com/about/license/
  */
- 
+
+// Calculate the scrollbar width dynamically!
+
 (function($,undefined,width){
   '$:nomunge'; // Used by YUI compressor.
   

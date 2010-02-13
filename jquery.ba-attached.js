@@ -1,13 +1,16 @@
 /*!
- * jQuery :attached, :detached - v1.0 - 2/12/2010
- * http://benalman.com/
+ * jQuery :attached, :detached - v1.1 - 2/13/2010
+ * http://benalman.com/projects/jquery-misc-plugins/
  * 
  * Copyright (c) 2010 "Cowboy" Ben Alman
  * Dual licensed under the MIT and GPL licenses.
  * http://benalman.com/about/license/
  */
 
+// Selectors that match elements currently attached to or detached from the DOM.
+
 (function($){
+  '$:nomunge'; // Used by YUI compressor.
   
   $.extend( $.expr[':'], {
     attached: attached,
@@ -15,8 +18,17 @@
   });
   
   function attached( elem ) {
+    var contains = $.contains,
+      documentElement = document.documentElement;
+    
+    // jQuery 1.4+
+    if ( contains ) {
+      return contains( documentElement, elem );
+    }
+    
+    // jQuery 1.3.2
     while ( elem = elem.parentNode ) {
-      if ( elem === document.documentElement ) {
+      if ( elem === documentElement ) {
         return true;
       }
     }
@@ -24,16 +36,3 @@
   };
   
 })(jQuery);
-
-
-// Usage:
-// 
-// var elem = $('a:first');
-// 
-// elem.is(':attached'); // true
-// elem.is(':detached'); // false
-// 
-// elem.detach();
-// 
-// elem.is(':attached'); // false
-// elem.is(':detached'); // true
