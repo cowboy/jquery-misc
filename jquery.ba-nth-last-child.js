@@ -1,38 +1,47 @@
 /*!
- * nth-last-child - v0.1 - 5/5/2009
+ * jQuery :nth-last-child - v0.2 - 2/13/2010
  * http://benalman.com/
  * 
- * Copyright (c) 2009 "Cowboy" Ben Alman
- * Licensed under the MIT license
+ * Copyright (c) 2010 "Cowboy" Ben Alman
+ * Dual licensed under the MIT and GPL licenses.
  * http://benalman.com/about/license/
  */
 
 (function($) {
   '$:nomunge'; // Used by YUI compressor.
   
-  $.expr[':']['nth-last-child'] = function( elem, i, match ) {
-    var count = 0,
-      node = elem.parentNode.firstChild;
+  // In Sizzle, Sizzle.selectors.match.CHILD could be this RegExp, and with some
+  // minor $.expr.filter.CHILD tweaks, this whole plugin could be obviated.
+  // /:(only|nth(?:-last)?|last|first)-child(?:\((even|odd|[\dn+-]*)\))?/
+  
+  var re_match = /:(nth)-last-child(?:\((even|odd|[\dn+-]*)\))?/,
     
-    if ( elem.nodeIndex ) {
-      count = $.sibling( node, elem ).length;
-    } else {
-      do {
-        if ( node && node.nodeType === 1 ) {
-          node.nodeIndex = ++count;
-        }
-      } while ( node = node.nextSibling );
-    }
+    // Method / object references.
+    jq_expr = $.expr,
+    jq_expr_filter_CHILD = jq_expr.filter.CHILD;
+  
+  jq_expr[':']['nth-last-child'] = function( elem, i, match, array ) {
     
-    return elem.nodeIndex === count + 2 - (match[3] || 0); 
+    // Get array for $.expr.preFilter.CHILD based on match RegExp.
+    var matches = match[0].match( re_match ),
+      children = $(elem.parentNode).children(),
+      counterpart_elem;
+    
+    // Convert number/equation into array for $.expr.filter.CHILD.
+    matches = jq_expr.preFilter.CHILD( matches );
+    
+    // This doesn't return anything meaningful, since it's geared entirely
+    // toward 'nth' instead of 'nth-last', BUT it does set node.nodeIndex on
+    // elem and all siblings if that property hasn't already been set.
+    jq_expr_filter_CHILD( elem, matches );
+    
+    // Since $.expr.filter.CHILD is only concerned with the position of the
+    // element in question, find the counterpart element that is elem's index
+    // from the end.
+    counterpart_elem = children.eq( children.length - elem.nodeIndex )[0];
+    
+    // Now, return the meaningful result.
+    return jq_expr_filter_CHILD( counterpart_elem, matches );
   };
   
 })(jQuery);
-
-// About:
-// 
-// Like :nth-child(N) but counts from the end, not the beginning.
-// 
-// Sample Usage:
-// 
-// $('ul li:nth-last-child(2)').addClass( 'penultimate-listitem' );
