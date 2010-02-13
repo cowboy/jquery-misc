@@ -1,6 +1,6 @@
 /*!
  * jQuery throttle - v0.1 - 2/12/2010
- * http://benalman.com/
+ * http://benalman.com/projects/jquery-misc-plugins/
  * 
  * Copyright (c) 2010 "Cowboy" Ben Alman
  * Dual licensed under the MIT and GPL licenses.
