@@ -12,6 +12,7 @@ Visit the [project page](http://benalman.com/projects/jquery-misc-plugins/) for 
 * [jQuery loadAdScript](http://benalman.com/projects/jquery-misc-plugins/#loadadscript) - Load third party ad network scripts that use `document.write` into specific containers.
 * [jQuery :nth-last-child selector](http://benalman.com/projects/jquery-misc-plugins/#nth-last-child) - Works exactly like jQuery's built-in :nth-child selector, except that it counts from the end. 
 * [jQuery scrollbarWidth](http://benalman.com/projects/jquery-misc-plugins/#scrollbarwidth) - Calculate the scrollbar width dynamically!
+* [jQuery selectColorize](http://benalman.com/projects/jquery-misc-plugins/#selectcolorize) - Basic cross-browser colored select boxes.
 * [jQuery serializeObject](http://benalman.com/projects/jquery-misc-plugins/#serializeobject) - Serialize a form into an object.
 * [jQuery viewportOffset](http://benalman.com/projects/jquery-misc-plugins/#viewportoffset) - Calculate left and top from the element's position relative to the viewport, not the document.
 
