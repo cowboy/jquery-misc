@@ -22,34 +22,3 @@
   };
   
 })(jQuery);
-
-// Usage:
-// 
-// Remove an element from the DOM after fading out.
-// 
-// $('#foo').fadeOut().queueFn( 'remove' );
-// 
-// 
-// Add "fading" class to en element, but only while it's fading in.
-// 
-// $('#bar')
-//   .hide()
-//   .addClass( 'fading' )
-//   .fadeIn()
-//   .queueFn( 'removeClass', 'fading' );
-// 
-// 
-// Change color of an element (in slightly different ways) between fades, then
-// remove the element if some_condition is true.
-// 
-// $('a:first')
-//   .fadeOut()
-//   .queueFn( 'css', { color: 'orange' } )
-//   .fadeIn()
-//   .queueFn( 'css', 'color', 'red' )
-//   .fadeOut()
-//   .queueFn(function(){
-//     if ( some_condition ) {
-//       $(this).remove();
-//     }
-//   });
