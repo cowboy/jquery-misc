@@ -1,5 +1,5 @@
 /*!
- * jQuery queueFn - v0.4 - 06/18/2010
+ * jQuery queueFn - v0.6 - 06/21/2010
  * http://benalman.com/projects/jquery-misc-plugins/
  * 
  * Copyright (c) 2010 "Cowboy" Ben Alman
@@ -15,9 +15,9 @@
     
     fn = $.isFunction( fn ) ? fn : $.fn[ fn ];
     
-    return this.queue(function(next){
+    return this.queue(function(){
       fn.apply( $(this), args );
-      next();
+      $.dequeue( this );
     });
   };
   
