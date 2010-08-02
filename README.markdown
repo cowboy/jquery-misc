@@ -6,6 +6,7 @@ This repository contains a collection of minor jQuery plugins which are too smal
 Visit the [project page](http://benalman.com/projects/jquery-misc-plugins/) for more information and usage examples!
 
 * [jQuery :attached, :detached selectors](http://benalman.com/projects/jquery-misc-plugins/#attached-detached) - Selectors that match elements currently attached to or detached from the DOM.
+* [jQuery each2](http://benalman.com/projects/jquery-misc-plugins/#each2) - If you were going to use `$(this)` inside an `.each` loop, use this plugin instead. It's faster.
 * [jQuery getClassData](http://benalman.com/projects/jquery-misc-plugins/#getclassdata) - If you're not yet using HTML 5 data- attributes, you can store basic data in an element's class attribute for easy retrieval.
 * [jQuery getUniqueClass](http://benalman.com/projects/jquery-misc-plugins/#getuniqueclass) - For when you really need a unique classname.
 * [jQuery isjQuery](http://benalman.com/projects/jquery-misc-plugins/#isjquery) - Determine if an object reference is a jQuery object.
