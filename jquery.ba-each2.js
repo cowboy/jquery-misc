@@ -21,8 +21,8 @@
     
     while (
       // Set both the first element AND context property of the placeholder
-      // jQuery object to the DOM element. When i > this.length, this[++i]
-      // will return undefined and abort the while loop.
+      // jQuery object to the DOM element. When i has been incremented past the
+      // end, this[++i] will return undefined and abort the while loop.
       ( jq.context = jq[0] = this[++i] )
       
       // Invoke the callback function in the context of the DOM element,
