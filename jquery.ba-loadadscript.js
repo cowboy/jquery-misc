@@ -1,5 +1,5 @@
 /*!
- * jQuery loadAdScript - v1.0 - 3/2/2010
+ * jQuery loadAdScript - v1.1 - 7/12/2010
  * http://benalman.com/projects/jquery-misc-plugins/
  * 
  * Copyright (c) 2010 "Cowboy" Ben Alman
@@ -13,6 +13,7 @@
   // A few references.
   var doc = document,
     write = doc.write,
+    writeln = doc.writeln,
     
     // Create queue.
     q = $.jqmq({
@@ -23,8 +24,9 @@
       // For each queue item, do this.
       callback: function( item ) {
         
-        // Override document.write.
-        doc.write = function( html ) {
+        // Override document.write and .writeln. Do we care that .writeln
+        // should append a newline character? Probably not.
+        doc.write = doc.writeln = function( html ) {
           item.elems.append( html );
         };
         
@@ -39,9 +41,10 @@
         });
       },
       
-      // When the queue completes, set document.write back.
+      // When the queue completes, set document.write and .writeln back.
       complete: function(){
         doc.write = write;
+        doc.writeln = writeln;
       }
     });
   
