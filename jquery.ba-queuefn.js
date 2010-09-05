@@ -1,5 +1,5 @@
 /*!
- * jQuery queueFn - v0.6 - 06/21/2010
+ * jQuery queueFn - v0.7 - 9/05/2010
  * http://benalman.com/projects/jquery-misc-plugins/
  * 
  * Copyright (c) 2010 "Cowboy" Ben Alman
@@ -11,12 +11,22 @@
   '$:nomunge'; // Used by YUI compressor.
   
   $.fn.queueFn = function( fn ) {
-    var args = Array.prototype.slice.call( arguments, 1 );
+    var i,
+      that,
+      args = Array.prototype.slice.call( arguments, 1 );
+    
+    if ( typeof fn === 'boolean' ) {
+      if ( fn ) {
+        that = this;
+        i = this.length;
+      }
+      fn = args.shift();
+    }
     
     fn = $.isFunction( fn ) ? fn : $.fn[ fn ];
     
     return this.queue(function(){
-      fn.apply( $(this), args );
+      !--i && fn.apply( that || this, args );
       $.dequeue( this );
     });
   };
