@@ -9,6 +9,7 @@ Visit the [project page](http://benalman.com/projects/jquery-misc-plugins/) for 
 * [jQuery each2](http://benalman.com/projects/jquery-misc-plugins/#each2) - If you're going to use `$(this)` inside an `.each` loop, iterating over many thousands of elements, use this plugin instead. It's faster.
 * [jQuery getClassData](http://benalman.com/projects/jquery-misc-plugins/#getclassdata) - If you're not yet using HTML 5 data- attributes, you can store basic data in an element's class attribute for easy retrieval.
 * [jQuery getUniqueClass](http://benalman.com/projects/jquery-misc-plugins/#getuniqueclass) - For when you really need a unique classname.
+* [jQuery htmlDoc](http://benalman.com/projects/jquery-misc-plugins/#htmldoc) - Get `html`, `head` and `body` in your `$(html)`.
 * [jQuery isjQuery](http://benalman.com/projects/jquery-misc-plugins/#isjquery) - Determine if an object reference is a jQuery object.
 * [jQuery loadAdScript](http://benalman.com/projects/jquery-misc-plugins/#loadadscript) - Load third party ad network scripts that use `document.write` into specific containers.
 * [jQuery :nth-last-child selector](http://benalman.com/projects/jquery-misc-plugins/#nth-last-child) - Works exactly like jQuery's built-in :nth-child selector, except that it counts from the end. 
@@ -29,4 +30,5 @@ These once-misc plugins have been "promoted" to full projects:
 Copyright (c) 2010 "Cowboy" Ben Alman  
 Dual licensed under the MIT and GPL licenses.
 [http://benalman.com/about/license/](http://benalman.com/about/license/)
+
 
